@@ -11,7 +11,7 @@ class ElasticSearchDbSetupCreator implements CcpDbSetupCreator {
 	@Override
 	public void createTables(String folder) {
 		CcpFolderDecorator directory = new CcpStringDecorator(folder).folder();
-//		directory.readFiles(new CreateTableConsumer());
+		directory.readFiles(new CreateTableConsumer());
 	}
 
 	@Override
