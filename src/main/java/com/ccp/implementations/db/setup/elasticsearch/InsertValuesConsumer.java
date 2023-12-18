@@ -2,19 +2,25 @@ package com.ccp.implementations.db.setup.elasticsearch;
 
 import java.util.function.Consumer;
 
-import com.ccp.decorators.CcpFileDecorator;
+import com.ccp.decorators.CcpFolderDecorator;
 
-class InsertValuesConsumer implements Consumer<CcpFileDecorator> {
+class InsertValuesConsumer implements Consumer<CcpFolderDecorator> {
 
-	private final HttpRequester httpRequester = new HttpRequester();
 
-	@Override
-	public void accept(CcpFileDecorator t) {
-		String index = t.getName();
-		String json = t.extractStringContent();
-		this.httpRequester.executeHttpRequest("/" + index, "DELETE", "");
-		this.httpRequester.executeHttpRequest("/" + index, "PUT", json, 200);
+	private final String prefix;
+	
+	public InsertValuesConsumer(String prefix) {
+		this.prefix = prefix;
 	}
 
+	@Override
+	public void accept(CcpFolderDecorator t) {
+		InsertInTableConsumer consumer = new InsertInTableConsumer(this.prefix);
+		t.readFiles(consumer);
+		
+	}
+
+	
+	
 	
 }

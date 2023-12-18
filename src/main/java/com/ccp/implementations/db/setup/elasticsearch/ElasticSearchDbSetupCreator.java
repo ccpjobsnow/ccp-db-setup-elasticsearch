@@ -15,7 +15,11 @@ class ElasticSearchDbSetupCreator implements CcpDbSetupCreator {
 	}
 
 	@Override
-	public void insertValues(String folder) {
+	public void insertValues(String prefix, String folder) {
+		CcpStringDecorator ccpStringDecorator = new CcpStringDecorator(folder);
+		CcpFolderDecorator directory = ccpStringDecorator.folder();
+		InsertValuesConsumer consumer = new InsertValuesConsumer(prefix);
+		directory.readFolders(consumer);
 		
 	}
 
