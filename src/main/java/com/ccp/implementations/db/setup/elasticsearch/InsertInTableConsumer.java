@@ -42,7 +42,7 @@ public class InsertInTableConsumer implements Consumer<CcpFileDecorator> {
 
 			String capitalize = new CcpStringDecorator(this.prefix).text().capitalize();
 			String className = packageName + ".{prefix}Entity".replace("{prefix}", capitalize) + camelCase;
-			baseEntity = (CcpEntity)Class.forName(className).newInstance();
+			baseEntity = (CcpEntity)Class.forName(className).getDeclaredConstructor().newInstance();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
