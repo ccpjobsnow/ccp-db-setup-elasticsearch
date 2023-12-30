@@ -48,7 +48,7 @@ public class InsertInTableConsumer implements Consumer<CcpFileDecorator> {
 		}
 		String id = baseEntity.getId(values);
 		String url = "/" + index + "/_doc/" + id;
-		String asJson = values.asJson();
+		String asJson = values.asUgglyJson();
 		CcpHttpResponse executeHttpRequest = this.httpRequester.executeHttpRequest(url, "POST", asJson);
 
 		if(executeHttpRequest.isSuccess()) {

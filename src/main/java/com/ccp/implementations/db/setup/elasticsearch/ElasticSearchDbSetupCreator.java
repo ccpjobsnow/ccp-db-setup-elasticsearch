@@ -38,7 +38,7 @@ class ElasticSearchDbSetupCreator implements CcpDbSetupCreator {
 		
 		String matchAll = CcpConstants.EMPTY_JSON
 						.putSubKey("query", "match_all", CcpConstants.EMPTY_JSON)
-						.asJson();
+						.asUgglyJson();
 		
 		CcpHttpResponse endpointResponse = this.httpRequester.executeHttpRequest(url, "POST", matchAll);
 
