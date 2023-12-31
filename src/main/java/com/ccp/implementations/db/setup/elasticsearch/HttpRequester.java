@@ -1,6 +1,6 @@
 package com.ccp.implementations.db.setup.elasticsearch;
 
-import com.ccp.decorators.CcpMapDecorator;
+import com.ccp.decorators.CcpJsonRepresentation;
 import com.ccp.dependency.injection.CcpDependencyInjection;
 import com.ccp.especifications.db.utils.CcpDbRequester;
 import com.ccp.especifications.http.CcpHttpRequester;
@@ -10,7 +10,7 @@ class HttpRequester {
 
 	private final CcpHttpRequester httpRequester = CcpDependencyInjection.getDependency(CcpHttpRequester.class);
 
-	private final CcpMapDecorator connectionDetails;
+	private final CcpJsonRepresentation connectionDetails;
 	private final String databaseUrl;
 
 	public HttpRequester() {

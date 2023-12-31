@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 import com.ccp.decorators.CcpFileDecorator;
-import com.ccp.decorators.CcpMapDecorator;
+import com.ccp.decorators.CcpJsonRepresentation;
 import com.ccp.decorators.CcpStringDecorator;
 import com.ccp.dependency.injection.CcpDependencyInjection;
 import com.ccp.especifications.db.utils.CcpEntity;
@@ -34,7 +34,7 @@ public class InsertInTableConsumer implements Consumer<CcpFileDecorator> {
 	}
 
 	private void create(String index, Map<String, Object> fromJson) {
-		CcpMapDecorator values = new CcpMapDecorator(fromJson);
+		CcpJsonRepresentation values = new CcpJsonRepresentation(fromJson);
 		String camelCase = new CcpStringDecorator(index).text().toCamelCase();
 		CcpEntity baseEntity;
 		try {
