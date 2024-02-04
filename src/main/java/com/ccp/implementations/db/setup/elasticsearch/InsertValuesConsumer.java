@@ -13,7 +13,7 @@ class InsertValuesConsumer implements Consumer<CcpFolderDecorator> {
 		this.prefix = prefix;
 	}
 
-	@Override
+	
 	public void accept(CcpFolderDecorator t) {
 		InsertInTableConsumer consumer = new InsertInTableConsumer(this.prefix);
 		t.readFiles(consumer);

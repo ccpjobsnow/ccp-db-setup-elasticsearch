@@ -11,13 +11,13 @@ class ElasticSearchDbSetupCreator implements CcpDbSetupCreator {
 	
 	private final HttpRequester httpRequester = new HttpRequester();
 
-	@Override
+	
 	public void createTables(String folder) {
 		CcpFolderDecorator directory = new CcpStringDecorator(folder).folder();
 		directory.readFiles(new CreateTableConsumer());
 	}
 
-	@Override
+	
 	public void insertValues(String prefix, String folder) {
 		CcpStringDecorator ccpStringDecorator = new CcpStringDecorator(folder);
 		CcpFolderDecorator directory = ccpStringDecorator.folder();
@@ -26,13 +26,13 @@ class ElasticSearchDbSetupCreator implements CcpDbSetupCreator {
 		
 	}
 
-	@Override
+	
 	public void dropAllTables() {
 		String uri = "/_all";
 		this.httpRequester.executeHttpRequest(uri, "DELETE", "", 200);
 	}
 
-	@Override
+	
 	public void deleteAllData() {
 		String url = "/_all/_delete_by_query";
 		

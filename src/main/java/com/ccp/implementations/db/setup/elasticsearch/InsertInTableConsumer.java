@@ -23,7 +23,7 @@ public class InsertInTableConsumer implements Consumer<CcpFileDecorator> {
 		this.prefix = prefix;
 	}
 
-	@Override
+	
 	public void accept(CcpFileDecorator t) {
 		String _json = t.extractStringContent();
 		String index = t.parent.getName();
